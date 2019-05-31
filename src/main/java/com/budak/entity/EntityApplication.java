@@ -50,6 +50,16 @@ public class EntityApplication implements CommandLineRunner {
 
         productRepository.save(productTwo);
 
+
+        Product productThree = new Product();
+        productThree.setName("Tester Product");
+        productThree.setDescription("description");
+        productThree.setCategory("TEST");
+        productThree.setType("SPECIFIC");
+        productThree.setPrice(19.0);
+
+        productRepository.save(productThree);
+
 //        List<Product> productList = productRepository.findAll();
 //        for (Product product : productList) {
 //            LOG.info("Products found: " + product.toString());
