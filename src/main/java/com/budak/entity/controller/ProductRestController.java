@@ -3,11 +3,10 @@ package com.budak.entity.controller;
 import com.budak.entity.model.Product;
 import com.budak.entity.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.Optional;
 
 /**
@@ -28,5 +27,10 @@ public class ProductRestController {
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
     public Optional<Product> getProduct(@PathVariable(name = "id") String id){
         return productRepository.findById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Product saveProduct(@RequestBody Product productPosted){
+        return productRepository.save(productPosted);
     }
 }
