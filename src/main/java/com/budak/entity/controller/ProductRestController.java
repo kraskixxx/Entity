@@ -54,4 +54,13 @@ public class ProductRestController {
             return product;
         }
     }
+
+    @RequestMapping(path = "{id}", method = RequestMethod.DELETE)
+    public void deleteProduct(@PathVariable("id") String id){
+        Optional<Product> productToDelete = productRepository.findById(id);
+
+        if(productToDelete != null){
+            productRepository.delete(productToDelete.get());
+        }
+    }
 }
